@@ -151,6 +151,7 @@ jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser
 ```
 
 **Example Output:**
+
 ![Jupyter Server Running](screenshots/jupyter_running.png)
 
 #### 5. Find Local IP Address
@@ -160,8 +161,14 @@ Find your system's IP address to access Jupyter remotely:
 ```bash
 hostname -I
 ```
+or 
+
+```bash
+ip a
+```
 
 **Example Output:**
+
 ![Find Local IP](https://github.com/tarunkumar-sys/IOT406/blob/main/Screenshot%20(313).png)
 
 #### 6. Allow Firewall Access (If Required)
@@ -234,6 +241,7 @@ ollama run llama3:2.1b
 ```
 
 **Example Output:**
+
 ![Ollama Running](https://github.com/tarunkumar-sys/IOT406/blob/main/Screenshot%20(312).png)
 
 #### 4. Create a Custom AI Model
