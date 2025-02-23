@@ -281,8 +281,6 @@ If you encounter issues, check Ollama logs:
 cat ~/.ollama/logs/latest.log
 ```
 
-**Example Log Output:**
-![Ollama Logs](screenshots/ollama_logs.png)
 
 This helps diagnose errors and ensure smooth operation.
 
