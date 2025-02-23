@@ -162,7 +162,7 @@ hostname -I
 ```
 
 **Example Output:**
-![Find Local IP](screenshots/find_ip.png)
+![Find Local IP](https://github.com/tarunkumar-sys/IOT406/blob/main/Screenshot%20(313).png)
 
 #### 6. Allow Firewall Access (If Required)
 
@@ -234,7 +234,7 @@ ollama run llama3:2.1b
 ```
 
 **Example Output:**
-![Ollama Running](screenshots/ollama_running.png)
+![Ollama Running](https://github.com/tarunkumar-sys/IOT406/blob/main/Screenshot%20(312).png)
 
 #### 4. Create a Custom AI Model
 
