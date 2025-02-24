@@ -292,3 +292,234 @@ cat ~/.ollama/logs/latest.log
 
 This helps diagnose errors and ensure smooth operation.
 
+---
+
+## Experiment 4: Setting Up Hadoop Environment
+
+### Overview
+
+Hadoop is an open-source framework that enables the distributed processing of large datasets. This experiment guides you through installing, configuring, and running Hadoop in a single-node setup.
+
+### Steps
+
+#### 1. Install Java (If Not Already Installed)
+
+Hadoop requires Java. If you haven’t installed it yet, follow these steps:
+
+```bash
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+```
+
+Verify Java installation:
+
+```bash
+java -version
+```
+
+If Java is not installed correctly, ensure that the correct version is set as the default:
+
+```bash
+sudo update-alternatives --config java
+```
+
+#### 2. Create Hadoop User
+
+Create a dedicated user for running Hadoop to ensure proper file permissions and security:
+
+```bash
+sudo adduser hadoop
+sudo usermod -aG sudo hadoop
+```
+
+Switch to the Hadoop user:
+
+```bash
+su - hadoop
+```
+
+Grant necessary permissions to Hadoop user:
+
+```bash
+sudo chown -R hadoop:hadoop /home/hadoop/
+```
+
+#### 3. Download Hadoop
+
+Download the Hadoop tar file from the Apache Hadoop website or use wget:
+
+```bash
+wget https://downloads.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz
+```
+
+Extract the Hadoop tar file:
+
+```bash
+sudo tar -xzvf hadoop-3.4.0.tar.gz -C /home/hadoop/
+```
+
+Rename the folder to 'hadoop':
+
+```bash
+sudo mv /home/hadoop/hadoop-3.4.0 /home/hadoop/hadoop
+```
+
+#### 4. Set Hadoop Environment Variables
+
+Open the .bashrc file:
+
+```bash
+nano ~/.bashrc
+```
+
+Add the following environment variables:
+
+```bash
+export HADOOP_HOME=/home/hadoop/hadoop
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin
+```
+
+Apply the changes by running:
+
+```bash
+source ~/.bashrc
+```
+
+#### 5. Configure Hadoop
+
+Edit Hadoop configuration files (core-site.xml, hdfs-site.xml, mapred-site.xml, yarn-site.xml) as needed.
+
+**Configure core-site.xml**
+
+```bash
+nano $HADOOP_HOME/etc/hadoop/core-site.xml
+```
+
+Add the following configuration:
+
+```xml
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+</configuration>
+```
+
+**Configure hdfs-site.xml**
+
+```bash
+nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+```
+
+Add the following configuration:
+
+```xml
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+</configuration>
+```
+
+**Configure mapred-site.xml**
+
+```bash
+nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
+```
+
+Convert the template to a working file:
+
+```bash
+cp $HADOOP_HOME/etc/hadoop/mapred-site.xml.template $HADOOP_HOME/etc/hadoop/mapred-site.xml
+```
+
+Add the following configuration:
+
+```xml
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+</configuration>
+```
+
+**Configure yarn-site.xml**
+
+```bash
+nano $HADOOP_HOME/etc/hadoop/yarn-site.xml
+```
+
+Add the following configuration:
+
+```xml
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+</configuration>
+```
+
+#### 6. Format the Hadoop Filesystem
+
+Before starting Hadoop, format the NameNode:
+
+```bash
+hdfs namenode -format
+```
+
+#### 7. Start Hadoop Services
+
+Start HDFS and YARN services:
+
+```bash
+start-dfs.sh
+start-yarn.sh
+```
+
+To check the status of services:
+
+```bash
+hdfs dfsadmin -report
+```
+
+#### 8. Verify Hadoop Setup
+
+Check the status of Hadoop services:
+
+```bash
+jps
+```
+
+You should see the following services running:
+
+- NameNode
+- DataNode
+- ResourceManager
+- NodeManager
+
+Additionally, to access the Hadoop web UI:
+
+- NameNode Web UI: [http://localhost:9870](http://localhost:9870)
+- ResourceManager Web UI: [http://localhost:8088](http://localhost:8088)
+
+To test the Hadoop installation, create a test directory in HDFS:
+
+```bash
+hdfs dfs -mkdir /test
+hdfs dfs -ls /
+```
+
+---
+
+
+
