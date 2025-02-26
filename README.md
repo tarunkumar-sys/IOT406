@@ -2,7 +2,6 @@
 
 VirtualBox is a powerful x86 and AMD64/Intel64 virtualization tool that allows you to run multiple operating systems simultaneously.
 
-### Steps
 
 #### 1. Download VirtualBox
 Visit the official [Oracle VirtualBox website](https://www.virtualbox.org/) and download the latest version for your OS.
@@ -11,8 +10,6 @@ Visit the official [Oracle VirtualBox website](https://www.virtualbox.org/) and 
 ## Configure Ubuntu in VirtualBox
 
 After installing VirtualBox, you can set up Ubuntu as a virtual machine.
-
-### Steps
 
 #### 1. Download Ubuntu ISO
 Download **Ubuntu 22.04.5** from the official [Ubuntu releases page](https://releases.ubuntu.com/jammy/):
@@ -65,12 +62,12 @@ To establish an SSH connection, both your laptop and your friend’s laptop must
    sudo apt update
    sudo apt install openssh-server -y
    ```
-2. Enable and start the SSH service so that it runs automatically:
+3. Enable and start the SSH service so that it runs automatically:
    ```bash
    sudo systemctl enable ssh
    sudo systemctl start ssh
    ```
-3. Verify that SSH is running:
+4. Verify that SSH is running:
    ```bash
    sudo systemctl status ssh
    ```
@@ -201,6 +198,7 @@ Once added, you can connect securely without entering a password.
 
 ---
 
+
 ## Experiment 2: Installing and Running Jupyter Notebook
 
 ### Overview
@@ -301,6 +299,7 @@ nohup jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser &
 ```
 
 ---
+
 
 ## Experiment 3: Setting Up Apache Tomcat and Deploying a Web Page
 
@@ -406,6 +405,7 @@ ls /opt/tomcat/webapps/anime
 
 ---
 
+
 ## Experiment 4: Installing and Using Ollama
 
 ### Overview
@@ -488,10 +488,10 @@ If you encounter issues, check Ollama logs:
 cat ~/.ollama/logs/latest.log
 ```
 
-
 This helps diagnose errors and ensure smooth operation.
 
 ---
+
 
 ## Experiment 5: Setting Up Hadoop Environment
 
@@ -638,7 +638,6 @@ Update the following line:
 export JAVA_HOME= /usr/lib/jvm/java-11-openjdk-amd64   
 update-alternatives --config java 
 ```
-
 
 Edit Hadoop configuration files (core-site.xml, hdfs-site.xml, mapred-site.xml, yarn-site.xml) as needed.
 
