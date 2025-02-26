@@ -780,8 +780,15 @@ wget https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/cs
 ### Upload Data to HDFS
 ```bash
 hadoop fs -mkdir -p /user/hadoop/covid19
-hadoop fs -put /home/hadoop/*.csv /user/hadoop/covid19/
+hadoop fs -put /home/hadoop/owid-covid-latest.csv /user/hadoop/covid19/
 ```
+change the file name by the file you use "owid-covid-latest.csv"
+
+### we will use here python code so wait
+```bash
+we will use here python code
+```
+we will use here python code
 
 ### Run MapReduce Job to Analyze Data
 Example: Count cases by country using a MapReduce job:
