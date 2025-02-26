@@ -582,7 +582,7 @@ nano ~/.bashrc
 Add the following environment variables:
 
 ```bash
-export HADOOP_HOME=/home/hdoop/hadoop-3.2.4/
+export HADOOP_HOME=/home/hdoop/hadoop/
 export HADOOP_INSTALL=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_COMMON_HOME=$HADOOP_HOME
